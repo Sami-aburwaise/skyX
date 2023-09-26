@@ -10,6 +10,10 @@ The objective of this project is to create a social media app.
  * create, edit, delete posts and comments
  * upload images and videos
 
+## How to get started
+
+
+
 ## wirefram
 
 ## progress
