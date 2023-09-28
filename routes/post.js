@@ -1,0 +1,14 @@
+//  load express package
+const express = require('express')
+
+//  invoke express Router functionality
+const router = express.Router()
+
+//  controllers
+const postCtrl = require('../controllers/post')
+
+//  routers
+router.get('/post/create', postCtrl.post_create_get)
+
+//export to server
+module.exports = router

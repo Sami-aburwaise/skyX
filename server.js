@@ -12,10 +12,11 @@ app.set('view engine', 'ejs')
 
 
 //  import routes
+const postRouter = require('../routes/post')
 
 
 //  use routes
-
+app.use('/', postRouter)
 
 //  listen to port
 const port = process.env.PORT
