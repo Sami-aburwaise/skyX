@@ -4,6 +4,8 @@ const express = require('express')
 //  invoke express Router functionality
 const router = express.Router()
 
+router.use(express.urlencoded({ extended: true }))
+
 //  controllers
 const postCtrl = require('../controllers/post')
 
