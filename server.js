@@ -17,11 +17,13 @@ const session = require('express-session')
 // const upload = multer({ storage: storage })
 require('dotenv').config()
 let passport = require('./helper/ppConfig')
+
 //  invoke initilize
 const app = express()
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
-//nitialises the authentication module.
+
+//  initialises the authentication module.
 app.use(passport.initialize())
 app.use(
   session({
@@ -31,8 +33,14 @@ app.use(
     cookie: { maxAge: 45000000 }
   })
 )
-//
 app.use(passport.session())
+
+// share user info with all ejs pages
+app.use(function(req, res, next){
+  res.locals.currentUser = req.user
+  next()
+})
+
 //  import routes
 const userRouter = require('./routes/user')
 const postRouter = require('./routes/post')
