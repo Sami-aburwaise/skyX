@@ -27,4 +27,12 @@ exports.post_create_post = (req, res) => {
     })
 }
 
-//  
+//  view post
+
+
+
+//  edit post
+
+
+//  update post
+

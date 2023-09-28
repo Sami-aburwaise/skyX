@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const postSchema = mongoose.Schema(
   {
     type: String,
+    path:String,
     description: String,
     likes: Number,
     user: {
