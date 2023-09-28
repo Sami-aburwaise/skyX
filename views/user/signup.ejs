@@ -1,6 +1,14 @@
 
 <h1>Sign UP</h1>
 <form action="/user/signup" method="POST">
+  <div class="profile-pic">
+    <label class="-label" for="file">
+      <span class="glyphicon glyphicon-camera"></span>
+      <span>Change Image</span>
+    </label>
+    <input id="file" type="file"  accept="image/*" onchange="loadFile(event)"/>
+    <img src="https://clipart-library.com/new_gallery/280-2806732_png-file-svg-default-profile-picture-png.png" id="output" width="100" />
+  </div>
   <div>
   <label>userName</label>
   <input type="text" name="userName"></div>
@@ -12,14 +20,7 @@
   <label>password</label>
   <input type="password" name="password">
 </div>
-<div class="profile-pic">
-  <label class="-label" for="file">
-    <span class="glyphicon glyphicon-camera"></span>
-    <span>Change Image</span>
-  </label>
-  <input id="file" type="file" onchange="loadFile(event)"/>
-  <img src="https://clipart-library.com/new_gallery/280-2806732_png-file-svg-default-profile-picture-png.png" id="output" width="200" />
-</div>
+
 <button type="submit">Sign Up</button>
 
 </form>
@@ -29,5 +30,4 @@
   var image = document.getElementById("output");
   image.src = URL.createObjectURL(event.target.files[0]);
 };
-
 </script>

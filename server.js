@@ -3,18 +3,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 const expressLayouts = require('express-ejs-layouts')
 const session = require('express-session')
-// const multer = require('multer')
-// const path = require('path')
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'images')
-//   },
-//   filename: (req, file, cb) => {
-//     console.log(file)
-//     cb(null, Date.now() + path.extname(file.originalname))
-//   }
-// })
-// const upload = multer({ storage: storage })
 require('dotenv').config()
 let passport = require('./helper/ppConfig')
 
