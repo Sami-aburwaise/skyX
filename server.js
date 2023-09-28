@@ -34,11 +34,11 @@ app.use(
 //
 app.use(passport.session())
 //  import routes
-const userCtrl = require('./routes/user')
+const userRouter = require('./routes/user')
 const postRouter = require('./routes/post')
 
 //  use routes
-app.use('/', userCtrl)
+app.use('/', userRouter)
 app.use('/', postRouter)
 
 //  listen to port
