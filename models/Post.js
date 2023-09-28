@@ -2,23 +2,27 @@
 const mongoose = require('mongoose')
 
 //  create schema
-const postSchema = mongoose.Schema({
-  type: String,
-  description: String,
-  likes: Number
-  //  waiting for user and comment models
-/*   user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  comment: [
-    {
+const postSchema = mongoose.Schema(
+  {
+    type: String,
+    description: String,
+    likes: Number,
+    user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Comment'
-    }
-  ] */
-})
+      ref: 'User'
+    },
+    comment: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+      }
+    ]
+  },
+  {
+    timestamps: true
+  }
+)
 
 //  create and export model
 const Post = mongoose.model('Post', postSchema)
-module.exports = {Post}
+module.exports = { Post }
