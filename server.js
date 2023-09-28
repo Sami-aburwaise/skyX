@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 
 
 //  import routes
-const postRouter = require('../routes/post')
+const postRouter = require('./routes/post')
 
 
 //  use routes
