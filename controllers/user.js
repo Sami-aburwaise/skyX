@@ -32,3 +32,13 @@ exports.user_signup_post = (req, res) => {
     })
   // res.send('Image Upload')
 }
+
+//  sign in
+exports.user_signin_get = (req, res) => {
+  res.render('user/signin')
+}
+
+exports.user_signin_post = passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: 'user/signin'
+})
