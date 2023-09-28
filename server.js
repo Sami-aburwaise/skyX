@@ -7,7 +7,8 @@ require('dotenv').config()
 
 //  invoke initilize
 const app = express()
-
+app.use(expressLayouts)
+app.set('view engine', 'ejs')
 
 
 //  import routes
@@ -25,5 +26,9 @@ app.listen(port, ()=>{
 //  connect to mongoDB
 mongoose.connect(process.env.mongoDBURL, {
   useNewUrlParser: true,
-  userUnifiedTopology:true
+  useUnifiedTopology:true
+}).then(()=>{
+  console.log('connected to mongoDB')
+}).catch((err)=>{
+  console.log('coudnt connect to mongoDB ' + err)
 })
