@@ -1,5 +1,5 @@
 //  import model
-const { Post } = require('../models/Post')
+const { Post } = require('../models /Post')
 
 //  API's
 
@@ -50,5 +50,3 @@ exports.post_delete_get = (req, res) => {
 
   res.redirect('/')
 }
-
-
