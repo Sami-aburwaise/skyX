@@ -3,7 +3,7 @@ const { Post } = require('../models/Post')
 
 //  API's
 
-//  create post 
+//  create post
 
 exports.post_create_get = (req, res) => {
   res.render('post/create')
@@ -28,22 +28,27 @@ exports.post_create_post = (req, res) => {
 }
 
 //  show feed or all post, index page
-exports.post_index_get = (req, res)=>{
+exports.post_index_get = (req, res) => {
   //  NOTE: add populate when user and comment models are added
-  Post.find().then((posts)=>{
-    res.render('post/index', {posts})
-  }).catch((err)=>{
-    console.log('couldnt find posts' + err)
-  })
+  Post.find()
+    .then((posts) => {
+      res.render('post/index', { posts })
+    })
+    .catch((err) => {
+      console.log('couldnt find posts' + err)
+    })
 }
-
 
 //  view my post
 
-
-
 //  edit post
 
+//  delete post
+exports.post_delete_get = (req, res) => {
+  //condition if this is my post then I can delete
+  //delete
 
-//  update post
+  res.redirect('/')
+}
+
 
