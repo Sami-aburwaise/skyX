@@ -1,9 +1,14 @@
 //  load packages
 const express = require('express')
 const mongoose = require('mongoose')
+const expressLayouts  = require('express-ejs-layouts')
+const session = require('express-session')
+require('dotenv').config()
 
 //  invoke initilize
 const app = express()
+
+
 
 //  import routes
 
