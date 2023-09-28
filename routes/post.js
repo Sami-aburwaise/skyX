@@ -12,6 +12,7 @@ const postCtrl = require('../controllers/post')
 //  routers
 router.get('/post/create', postCtrl.post_create_get)
 router.post('/post/create', postCtrl.post_create_post)
+router.get('/', postCtrl.post_index_get)
 
 //export to server
 module.exports = router

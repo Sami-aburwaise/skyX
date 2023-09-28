@@ -27,7 +27,18 @@ exports.post_create_post = (req, res) => {
     })
 }
 
-//  view post
+//  show feed or all post, index page
+exports.post_index_get = (req, res)=>{
+  //  NOTE: add populate when user and comment models are added
+  Post.find().then((posts)=>{
+    res.render('post/index', {posts})
+  }).catch((err)=>{
+    console.log('couldnt find posts' + err)
+  })
+}
+
+
+//  view my post
 
 
 
