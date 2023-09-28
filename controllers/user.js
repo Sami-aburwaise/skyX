@@ -17,6 +17,8 @@ let salt = 12
 exports.user_signup_get = (req, res) => {
   res.render('user/signup')
 }
+
+//  Sign up 
 exports.user_signup_post = (req, res) => {
   let user = User(req.body)
   let hashPass = bcrypt.hashSync(req.body.password, salt)
@@ -42,3 +44,13 @@ exports.user_signin_post = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: 'user/signin'
 })
+
+//  log out
+exports.user_logout_get = (req, res)=>{
+  req.logout((err)=>{
+    if(err){
+      return next(err)
+    }
+    res.redirect('/user/signin')
+  })
+} 
