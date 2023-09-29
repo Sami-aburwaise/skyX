@@ -1,26 +1,24 @@
 const express = require('express')
 const router = express.Router()
+const multer = require('multer')
 router.use(express.urlencoded({ extended: true }))
-
-// const multer = require('multer')
-// const path = require('path')
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'images')
-//   },
-//   filename: (req, file, cb) => {
-//     console.log(file)
-//     cb(null, Date.now() + path.extname(file.originalname))
-//   }
-// })
-//const upload = multer({ storage: storage })
-
 //  controllers
 const userCtrl = require('../controllers/user')
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './profilePic')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '_' + Date.now() + '_' + file.originalname)
+  }
+})
+var upload = multer({
+  storage: storage
+}).single('profilePic')
 
 //  routes
 router.get('/user/signup', userCtrl.user_signup_get)
-router.post('/user/signup', userCtrl.user_signup_post)
+router.post('/user/signup', upload, userCtrl.user_signup_post)
 router.get('/user/signin', userCtrl.user_signin_get)
 router.post('/user/signin', userCtrl.user_signin_post)
 router.get('/user/logOut', userCtrl.user_logout_get)

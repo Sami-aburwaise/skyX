@@ -2,19 +2,20 @@ const User = require('../models /User')
 const { Post } = require('../models /Post')
 const bcrypt = require('bcrypt')
 const passport = require('../helper/ppConfig')
-// const multer = require('multer')
-// const path = require('path')
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'images')
-//   },
-//   filename: (req, file, cb) => {
-//     console.log(file)
-//     cb(null, Date.now() + path.extname(file.originalname))
-//   }
-// })
-// const upload = multer({ storage: storage })
+const multer = require('multer')
 let salt = 12
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './profilePic')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '_' + Date.now() + '_' + file.originalname)
+  }
+})
+var upload = multer({
+  storage: storage
+}).single('profilePic')
+
 exports.user_signup_get = (req, res) => {
   res.render('user/signup')
 }
@@ -22,6 +23,7 @@ exports.user_signup_get = (req, res) => {
 //  Sign up
 exports.user_signup_post = (req, res) => {
   let user = User(req.body)
+  user.profilePic = req.file.filename
   let hashPass = bcrypt.hashSync(req.body.password, salt)
   user.password = hashPass
   user
@@ -33,7 +35,6 @@ exports.user_signup_post = (req, res) => {
       res.send('Try Again')
       console.log(err)
     })
-  // res.send('Image Upload')
 }
 
 //  sign in
@@ -56,6 +57,7 @@ exports.user_logout_get = (req, res) => {
   })
 }
 
+
 //  show profile
 exports.profile_show_get = (req, res) => {
   Post.find({ user: res.locals.currentUser })
@@ -66,3 +68,4 @@ exports.profile_show_get = (req, res) => {
       console.log(err)
     })
 }
+
