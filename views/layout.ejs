@@ -8,6 +8,10 @@
 <body>
   <h1><a href="/">LOGO HERE</a></h1>
   <br>
+  <% if(currentUser){ %>
+    <h3><a href="/user/profile"><%= currentUser.userName %></a></h3>
+  <% } %>
+  <br>
   <nav>
     <a href="/post/create">create post</a>
     <a href="/user/signup">sign up</a>
