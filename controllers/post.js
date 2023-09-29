@@ -1,5 +1,6 @@
 //  import model
 const { Post } = require('../models /Post')
+const { post } = require('../routes/user')
 
 //  API's
 
@@ -49,4 +50,25 @@ exports.post_delete_get = (req, res) => {
   //delete
 
   res.redirect('/')
+}
+
+//  like post
+exports.post_like_post = async (req, res) => {
+  const post = await Post.findById(req.query.id)
+  if (post.likes.includes(res.locals.currentUser.id)) {
+    res.redirect('/')
+    return
+  }
+  post
+    .updateOne({
+      $push: { likes: res.locals.currentUser }
+    })
+    .then(() => {
+      console.log('like!' + req.query.id)
+
+      res.redirect('/')
+    })
+    .catch((err) => {
+      console.log('err')
+    })
 }
