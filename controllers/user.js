@@ -1,4 +1,5 @@
 const User = require('../models /User')
+const { Post } = require('../models /Post')
 const bcrypt = require('bcrypt')
 const passport = require('../helper/ppConfig')
 const multer = require('multer')
@@ -43,7 +44,7 @@ exports.user_signin_get = (req, res) => {
 
 exports.user_signin_post = passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: 'user/signin'
+  failureRedirect: 'signin'
 })
 
 //  log out
@@ -55,3 +56,16 @@ exports.user_logout_get = (req, res) => {
     res.redirect('/user/signin')
   })
 }
+
+
+//  show profile
+exports.profile_show_get = (req, res) => {
+  Post.find({ user: res.locals.currentUser })
+    .then((posts) => {
+      res.render('user/profile', { posts })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
