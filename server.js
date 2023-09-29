@@ -16,7 +16,7 @@ app.use(passport.initialize())
 app.use(
   session({
     secret: process.env.SECRET,
-    saveUninitalized: true,
+    saveUninitialized: true,
     resave: false,
     cookie: { maxAge: 45000000 }
   })
