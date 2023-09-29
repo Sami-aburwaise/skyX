@@ -42,7 +42,7 @@ exports.user_signin_get = (req, res) => {
 
 exports.user_signin_post = passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: 'user/signin'
+  failureRedirect: 'signin'
 })
 
 //  log out
