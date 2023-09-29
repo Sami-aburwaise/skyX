@@ -2,37 +2,38 @@ const User = require('../models /User')
 const bcrypt = require('bcrypt')
 const passport = require('../helper/ppConfig')
 const multer = require('multer')
-const path = require('path')
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'images')
+let salt = 12
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './profilePic')
   },
-  filename: (req, file, cb) => {
-    console.log(file)
-    cb(null, Date.now() + path.extname(file.originalname))
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '_' + Date.now() + '_' + file.originalname)
   }
 })
-const upload = multer({ storage: storage })
-let salt = 12
+var upload = multer({
+  storage: storage
+}).single('profilePic')
+
 exports.user_signup_get = (req, res) => {
   res.render('user/signup')
 }
 
-//  Sign up 
+//  Sign up
 exports.user_signup_post = (req, res) => {
   let user = User(req.body)
+  user.profilePic = req.file.filename
   let hashPass = bcrypt.hashSync(req.body.password, salt)
   user.password = hashPass
   user
     .save()
     .then(() => {
-      res.redirect('/user/signup')
+      res.redirect('/')
     })
     .catch((err) => {
       res.send('Try Again')
       console.log(err)
     })
-  // res.send('Image Upload')
 }
 
 //  sign in
@@ -46,11 +47,11 @@ exports.user_signin_post = passport.authenticate('local', {
 })
 
 //  log out
-exports.user_logout_get = (req, res)=>{
-  req.logout((err)=>{
-    if(err){
+exports.user_logout_get = (req, res) => {
+  req.logout((err) => {
+    if (err) {
       return next(err)
     }
     res.redirect('/user/signin')
   })
-} 
+}
