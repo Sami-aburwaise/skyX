@@ -24,6 +24,6 @@ router.post('/user/signup', userCtrl.user_signup_post)
 router.get('/user/signin', userCtrl.user_signin_get)
 router.post('/user/signin', userCtrl.user_signin_post)
 router.get('/user/logOut', userCtrl.user_logout_get)
-
+router.get('/user/profile', userCtrl.profile_show_get)
 //export to server
 module.exports = router
