@@ -20,7 +20,10 @@ const userSchema = mongoose.Schema(
       required: true,
       minlength: [6, 'Weak Password']
     },
-    profilePic: String
+    profilePic: {
+      type: String,
+      default: 'profilePic/prof.png'
+    }
   },
   {
     timestamps: true
@@ -28,7 +31,7 @@ const userSchema = mongoose.Schema(
 )
 
 // verify password function
-userSchema.methods.verifyPassword = function(password){
+userSchema.methods.verifyPassword = function (password) {
   return bcrypt.compareSync(password, this.password)
 }
 // export maodel
