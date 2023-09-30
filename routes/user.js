@@ -2,11 +2,10 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 router.use(express.urlencoded({ extended: true }))
-//  controllers
-const userCtrl = require('../controllers/user')
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './profilePic')
+    cb(null, './public/profilePic')
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + '_' + Date.now() + '_' + file.originalname)
@@ -16,6 +15,8 @@ var upload = multer({
   storage: storage
 }).single('profilePic')
 
+//  controllers
+const userCtrl = require('../controllers/user')
 //  routes
 router.get('/user/signup', userCtrl.user_signup_get)
 router.post('/user/signup', upload, userCtrl.user_signup_post)

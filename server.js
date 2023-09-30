@@ -11,7 +11,7 @@ const app = express()
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static('profilePic'))
+app.use(express.static('public'))
 
 
 //  initialises the authentication module.
