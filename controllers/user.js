@@ -23,7 +23,7 @@ exports.user_signup_get = (req, res) => {
 //  Sign up
 exports.user_signup_post = (req, res) => {
   let user = User(req.body)
-  user.profilePic = req.file.filename
+  
   let hashPass = bcrypt.hashSync(req.body.password, salt)
   user.password = hashPass
   user
