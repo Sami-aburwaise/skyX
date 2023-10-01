@@ -39,26 +39,7 @@ const postRouter = require('./routes/post')
 //  use routes
 app.use('/', userRouter)
 app.use('/', postRouter)
-// const User = require('./models /User')
-// const bcrypt = require('bcrypt')
-// const multer = require('multer')
-// let salt = 12
 
-// app.post('/user/signup', upload, (req, res) => {
-//   let user = User(req.body)
-//   user.profilePic = req.file.filename
-//   let hashPass = bcrypt.hashSync(req.body.password, salt)
-//   user.password = hashPass
-//   user
-//     .save()
-//     .then(() => {
-//       res.redirect('/')
-//     })
-//     .catch((err) => {
-//       res.send('Try Again')
-//       console.log(err)
-//     })
-// })
 //  listen to port
 const port = process.env.PORT
 app.listen(port, () => {

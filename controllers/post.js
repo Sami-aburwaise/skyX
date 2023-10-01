@@ -1,6 +1,10 @@
+//  load packages
+const multer = require('multer')
+
 //  import model
 const { Post } = require('../models /Post')
-const { post } = require('../routes/user')
+const { User } = require('../routes/user')
+
 
 //  API's
 
@@ -11,9 +15,10 @@ exports.post_create_get = (req, res) => {
 }
 
 exports.post_create_post = (req, res) => {
-  //  send to DB
-  console.log(req.body)
   let post = new Post(req.body)
+  if (typeof req.file !== 'undefined') {
+    post.profilePic = 'post_images/' + req.file.filename
+  }
   post
     .save()
     .then(() => {
@@ -21,7 +26,7 @@ exports.post_create_post = (req, res) => {
       //add user id
 
       //redirect to home page
-      res.render('post/create')
+      res.redirect('/')
     })
     .catch((err) => {
       console.log(err)
@@ -45,18 +50,23 @@ exports.post_index_get = (req, res) => {
 //  edit post
 
 //  delete post
-exports.post_delete_get = (req, res) => {
-  //condition if this is my post then I can delete
-  //delete
-
-  res.redirect('/')
+exports.post_delete_get = async (req, res) => {
+  const post = await Post.findById(req.query.id).populate()
+  if (post.user == res.locals.currentUser.id) {
+    Post.deleteOne(post)
+      .then()
+      .catch((err) => {
+        console.log('cuoldnt delete error: ' + err)
+      })
+  }
+  res.redirect('back')
 }
 
 //  like post
 exports.post_like_post = async (req, res) => {
   const post = await Post.findById(req.query.id)
   if (post.likes.includes(res.locals.currentUser.id)) {
-    res.redirect('/')
+    res.redirect('back')
     return
   }
   post
@@ -64,9 +74,7 @@ exports.post_like_post = async (req, res) => {
       $push: { likes: res.locals.currentUser }
     })
     .then(() => {
-      console.log('like!' + req.query.id)
-
-      res.redirect('/')
+      res.redirect('back')
     })
     .catch((err) => {
       console.log('err')
