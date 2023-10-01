@@ -1,15 +1,18 @@
+
 <link rel="stylesheet" href="/css/post_style.css">
+
 <h1>posts</h1>
 <br>
 <% posts.forEach((post)=>{ %>
 
   <br>
   <div class="post-container">
+    <div class="imgOrVideo">
     <% if(post.type == "image"){ %>
       <img src="/<%= post.path %>" alt="post image">
     <% }else if(post.type == "video"){ %>
       <iframe width="560" height="315" src="<%= post.path %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <% } %>
+    <% } %></div>
     <div class="post-description">
       <%= post.description %>
     </div>
@@ -17,8 +20,8 @@
     <br>
     likes: <%= post.likes.length %>
     <br>
-    <form action="/like?id=<%= post._id %>" method="post"><button>like</button></form>
+    <form action="/like?id=<%= post._id %>" method="post"><button><img class="like" src="/profilePic/he.jpeg" alt=""></button></form>
   </div>
-  <hr>
+
 <% }) %>
 

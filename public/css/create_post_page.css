@@ -11,3 +11,8 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.create { 
+  position: fixed;
+  left: 800px;
+}
