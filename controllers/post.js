@@ -26,7 +26,7 @@ exports.post_create_post = (req, res) => {
       //add user id
 
       //redirect to home page
-      res.render('post/create')
+      res.redirect('/')
     })
     .catch((err) => {
       console.log(err)

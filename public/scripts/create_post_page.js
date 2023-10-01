@@ -7,7 +7,7 @@ selectMedia.addEventListener('click', () => {
   if (selectMedia.value == 'video') {
     mediaSource.innerHTML = `  
     <label> Video link : </label>
-    <input type="text" name="link">`
+    <input type="text" name="path">`
   } else if (selectMedia.value == 'image') {
     mediaSource.innerHTML = `  
       <label for="file" id="uploadButton"> upload image </label>
