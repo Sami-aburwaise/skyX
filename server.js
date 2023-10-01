@@ -40,6 +40,7 @@ const postRouter = require('./routes/post')
 //  use routes
 app.use('/', userRouter)
 app.use('/', postRouter)
+
 //  listen to port
 const port = process.env.PORT
 app.listen(port, () => {
