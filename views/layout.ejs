@@ -4,37 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social App</title>
-  <style>
-    img{
-      width: 100px;
-      height: 100px;
-    }
-    .topnav {
- 
-  overflow: hidden;
-}
-.topnav a {
-  float:right;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bolder;
-}
-.topnav h1{
-  float:left;
-}
-#pro{
-  position: relative;
-left: 83%;
-}
-
-
-  </style>
+  <link rel="stylesheet" href="/css/layout_page.css">
 </head>
 <body>
   <nav class="topnav">
-  <h1><a href="/"><img src="/profilePic/SkyX.jpeg" alt="logo"></a></h1>
+  <h1><a href="/"><img id="logo" src="/profilePic/SkyX.jpeg" alt="logo"></a></h1>
   <br>
   <% if(currentUser){ %>
 

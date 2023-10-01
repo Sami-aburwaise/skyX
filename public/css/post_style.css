@@ -1,0 +1,9 @@
+.post-container{
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-description{
+
+}
