@@ -38,7 +38,7 @@ left: 83%;
   <br>
   <% if(currentUser){ %>
 
-    <img src="<%=currentUser.profilePic%>" alt="profilepicture" width="50px" id="pro">
+    <img src="/<%=currentUser.profilePic%>" alt="profilepicture" width="50px" id="pro">
     <h3 class="uname"><a href="/user/profile?id=<%=currentUser._id%>"><%= currentUser.userName %></a></h3>
 
 
