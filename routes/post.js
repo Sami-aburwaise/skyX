@@ -15,7 +15,9 @@ const postCtrl = require('../controllers/post')
 router.get('/post/create', postCtrl.post_create_get)
 router.post('/post/create', postCtrl.post_create_post)
 router.get('/', postCtrl.post_index_get)
-router.get('/delete', postCtrl.post_delete_get)
+router.get('/post/edit', postCtrl.post_edit_get)
+router.post('/post/update', postCtrl.post_updete_post)
+router.get('/post/delete', postCtrl.post_delete_get)
 router.post('/like', postCtrl.post_like_post)
 
 //export to server

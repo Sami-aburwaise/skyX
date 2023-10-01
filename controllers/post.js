@@ -5,7 +5,6 @@ const multer = require('multer')
 const { Post } = require('../models /Post')
 const { User } = require('../routes/user')
 
-
 //  API's
 
 //  create post
@@ -23,9 +22,6 @@ exports.post_create_post = (req, res) => {
     .save()
     .then(() => {
       console.log('saved to mongoDB')
-      //add user id
-
-      //redirect to home page
       res.redirect('/')
     })
     .catch((err) => {
@@ -48,6 +44,25 @@ exports.post_index_get = (req, res) => {
 //  view my post
 
 //  edit post
+exports.post_edit_get = async (req, res) => {
+  Post.findById(req.query.id).then((post) => {
+    if (post.user == res.locals.currentUser.id) {
+      res.render('post/edit', { post })
+    }
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
+
+exports.post_updete_post = (req, res) => {
+  Post.findByIdAndUpdate(req.body.id, req.body)
+    .then(() => {
+      res.redirect('/user/profile')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
 //  delete post
 exports.post_delete_get = async (req, res) => {

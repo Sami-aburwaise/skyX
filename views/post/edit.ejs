@@ -1,0 +1,33 @@
+<script defer src="/scripts/edit_post_page.js"></script>
+<link rel="stylesheet" href="/css/edit_post_page.css">
+<h1>Edit post</h1>
+<form action="/post/update" method="post">
+  <br>
+  <div>
+    <label>type</label>
+    <select name="type">
+      <option value="" selected disabled hidden></option>
+      <option value="noMedia">no media</option>
+      <option value="image">image</option>
+      <option value="video">video</option>
+    </select>
+  </div>
+  <br>
+  <div id="mediaSource">
+    <% if(post.type == "image"){ %>
+      <img src="/<%= post.path %>" alt="post image">
+    <% }else if(post.type == "video"){ %>
+      <iframe width="560" height="315" src="<%= post.path %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <% } %>
+  </div>
+  <br>
+  <div>
+    <label>description</label>
+    <input type="text" name="description" value="<%= post.description %>" >
+  </div>
+  <br>
+  <input type="hidden" name="user" value="<%= currentUser.id %>">
+  <input type="hidden" name="id" value="<%= post._id %>">
+  <button type="submit">update</button>
+
+</form>
