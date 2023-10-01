@@ -56,7 +56,7 @@ exports.post_delete_get = (req, res) => {
 exports.post_like_post = async (req, res) => {
   const post = await Post.findById(req.query.id)
   if (post.likes.includes(res.locals.currentUser.id)) {
-    res.redirect('/')
+    res.redirect('back')
     return
   }
   post
@@ -64,9 +64,7 @@ exports.post_like_post = async (req, res) => {
       $push: { likes: res.locals.currentUser }
     })
     .then(() => {
-      console.log('like!' + req.query.id)
-
-      res.redirect('/')
+      res.redirect('back')
     })
     .catch((err) => {
       console.log('err')

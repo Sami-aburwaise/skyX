@@ -9,7 +9,7 @@
   <h1><a href="/">LOGO HERE</a></h1>
   <br>
   <% if(currentUser){ %>
-    <img src="<%= currentUser.profilePic %>" alt="profile picture" width="50px">
+    <img src="/<%= currentUser.profilePic %>" alt="profile picture" width="50px">
     <h3><a href="/user/profile"><%= currentUser.userName %></a></h3>
   <% } %>
   <br>
