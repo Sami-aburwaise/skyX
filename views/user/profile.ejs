@@ -1,14 +1,12 @@
 <h1>Profile page</h1>
-
+<a href="/user/edit/?id=<%=currentUser._id%>">Edit Profile</a>
 <div>
-  
 </div>
 
 <hr>
 <h2>my posts</h2>
 
 <% posts.forEach((post)=>{ %>
-
 <br>
   <div class="post-container">
     <% if(post.type == "image"){ %>

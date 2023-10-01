@@ -8,7 +8,7 @@ let salt = 12
 
 //  Sign up
 exports.user_signup_get = (req, res) => {
-  res.render('user/signup')
+  res.render('user/signup', { layout: 'user/signup' })
 }
 
 exports.user_signup_post = (req, res) => {
@@ -32,7 +32,7 @@ exports.user_signup_post = (req, res) => {
 
 //  sign in
 exports.user_signin_get = (req, res) => {
-  res.render('user/signin')
+  res.render('user/signin', { layout: 'user/signin' })
 }
 
 exports.user_signin_post = passport.authenticate('local', {
@@ -54,9 +54,51 @@ exports.user_logout_get = (req, res) => {
 exports.profile_show_get = (req, res) => {
   Post.find({ user: res.locals.currentUser })
     .then((posts) => {
-      res.render('user/profile', { posts })
+      User.findById(req.body.id)
+        .then((user) => {
+          res.render('user/profile', { posts, user })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     })
     .catch((err) => {
       console.log(err)
     })
+}
+
+//Get Edit profile Page
+exports.profile_edit_get = (req, res) => {
+  User.findById(req.query.id)
+    .then((user) => {
+      res.render('user/edit', { user })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+exports.profile_edit_post = (req, res) => {
+  let user = req.body
+  // user.userName = req.body.userName
+  // user.save(() => {
+  //   res.render('/')
+  // })
+  let hashPass = bcrypt.hashSync(req.body.password, salt)
+  user.password = hashPass
+  User.findByIdAndUpdate(req.body.id, user)
+    .then(() => {
+      // let hashPass = bcrypt.hashSync(req.body.password, salt)
+      // User.password = hashPass
+      res.redirect('/')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  // User.findById(req.body.id)
+  //   .then(() => {
+  //     User.userName = req.body.userName
+  //   })
+  //   .catch((err) => {
+  //     console.log(err)
+  //   })
 }
