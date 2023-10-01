@@ -10,7 +10,12 @@
 <% posts.forEach((post)=>{ %>
 
 <br>
-  <div>
+  <div class="post-container">
+    <% if(post.type == "image"){ %>
+      <img src="/<%= post.path %>" alt="post image">
+    <% }else if(post.type == "video"){ %>
+      <iframe width="560" height="315" src="<%= post.path %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <% } %>
     <%= post.description %>
     <br>
     likes: <%= post.likes.length %>
@@ -18,8 +23,9 @@
       <form action="/like?id=<%= post._id %>" method="post">
         <button>like</button>
       </form>
-      <a href="/delete?id=<%= post._id %>">delete</a>
-    </form>
+      <a href="/post/delete?id=<%= post._id %>">delete</a>
+      <a href="/post/edit?id=<%= post._id %>">edit</a>
+      <a href="/post/detail?id=<%= post._id %>">details</a>
   </div>
   <hr>
 <% }) %>

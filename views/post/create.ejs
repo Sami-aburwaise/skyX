@@ -2,10 +2,7 @@
 <link rel="stylesheet" href="/css/create_post_page.css">
 <h1>Create post</h1>
 <form action="/post/create" method="post">
-  <div>
-    <label>description</label>
-    <input type="text" name="description">
-  </div>
+
   <br>
   <div>
     <label>type</label>
@@ -17,6 +14,11 @@
   </div>
   <br>
   <div id="mediaSource">
+  </div>
+  <br>
+  <div>
+    <label>description</label>
+    <input type="text" name="description">
   </div>
   <br>
   <input type="hidden" name="user" value="<%= currentUser.id %>">

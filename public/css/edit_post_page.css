@@ -1,0 +1,13 @@
+#uploadButton{
+  outline: solid;
+}
+
+#uploadedImage{
+  display: none;
+}
+
+#mediaSource{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
