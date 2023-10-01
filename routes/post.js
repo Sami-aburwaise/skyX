@@ -1,10 +1,12 @@
-//  load express package
+//  load packages
 const express = require('express')
-
+const multer = require('multer')
 //  invoke express Router functionality
 const router = express.Router()
 
 router.use(express.urlencoded({ extended: true }))
+
+//upload image
 
 //  controllers
 const postCtrl = require('../controllers/post')

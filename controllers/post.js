@@ -1,6 +1,10 @@
+//  load packages
+const multer = require('multer')
+
 //  import model
 const { Post } = require('../models /Post')
-const { post } = require('../routes/user')
+const { User } = require('../routes/user')
+
 
 //  API's
 
@@ -11,9 +15,10 @@ exports.post_create_get = (req, res) => {
 }
 
 exports.post_create_post = (req, res) => {
-  //  send to DB
-  console.log(req.body)
   let post = new Post(req.body)
+  if (typeof req.file !== 'undefined') {
+    post.profilePic = 'post_images/' + req.file.filename
+  }
   post
     .save()
     .then(() => {

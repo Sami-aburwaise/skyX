@@ -4,6 +4,9 @@
 
   <br>
   <div>
+    <% if(post.type == "image"){ %>
+      <img src="/<%= post.path %>" alt="post image">
+    <% } %>
     <%= post.description %>
     <br>
     likes: <%= post.likes.length %>
