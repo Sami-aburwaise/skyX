@@ -3,23 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Social App</title>
+  <style>
+    img{
+      width: 100px;
+      height: 100px;
+    }
+    .topnav {
+ 
+  overflow: hidden;
+}
+.topnav a {
+  float:right;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.topnav h1{
+  float:left;
+}
+#pro{
+  position: relative;
+left: 83%;
+}
+
+
+  </style>
 </head>
 <body>
-  <h1><a href="/">LOGO HERE</a></h1>
+  <nav class="topnav">
+  <h1><a href="/"><img src="/profilePic/SkyX.jpeg" alt="logo"></a></h1>
   <br>
   <% if(currentUser){ %>
-    <img src="<%= currentUser.profilePic %>" alt="profile picture" width="50px">
-    <h3><a href="/user/profile"><%= currentUser.userName %></a></h3>
+    <img src="<%=currentUser.profilePic%>" alt="profilepicture" width="50px" id="pro">
+    <h3 class="uname"><a href="/user/profile?id=<%=currentUser._id%>"><%= currentUser.userName %></a></h3>
+
+
+    <a href="/user/logOut">LogOut</a>
+    <a href="/post/create">Create Post</a>
   <% } %>
   <br>
-  <nav>
-    <a href="/post/create">create post</a>
-    <a href="/user/signup">sign up</a>
-    <a href="/user/signin">sign in</a>
-    <a href="/user/logOut">log out</a>
+  
+  <% if(!currentUser){ %>
+ 
+    <a href="/user/signup">SignUp</a>
+    <a href="/user/signin">SignIn</a>
+    <% } %>
+
   </nav>
-  <hr>
+
   <%- body %>
 </body>
 </html>
