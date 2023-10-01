@@ -45,13 +45,15 @@ exports.post_index_get = (req, res) => {
 
 //  edit post
 exports.post_edit_get = async (req, res) => {
-  Post.findById(req.query.id).then((post) => {
-    if (post.user == res.locals.currentUser.id) {
-      res.render('post/edit', { post })
-    }
-  }).catch((err)=>{
-    console.log(err)
-  })
+  Post.findById(req.query.id)
+    .then((post) => {
+      if (post.user == res.locals.currentUser.id) {
+        res.render('post/edit', { post })
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 exports.post_updete_post = (req, res) => {
@@ -66,32 +68,42 @@ exports.post_updete_post = (req, res) => {
 
 //  delete post
 exports.post_delete_get = async (req, res) => {
-  const post = await Post.findById(req.query.id).populate()
-  if (post.user == res.locals.currentUser.id) {
-    Post.deleteOne(post)
-      .then()
-      .catch((err) => {
-        console.log('cuoldnt delete error: ' + err)
-      })
-  }
-  res.redirect('back')
+  Post.findById(req.query.id)
+    .then((post) => {
+      if (post.user == res.locals.currentUser.id) {
+        Post.deleteOne(post)
+          .then()
+          .catch((err) => {
+            console.log('cuoldnt delete error: ' + err)
+          })
+      }
+      res.redirect('back')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 //  like post
 exports.post_like_post = async (req, res) => {
-  const post = await Post.findById(req.query.id)
-  if (post.likes.includes(res.locals.currentUser.id)) {
-    res.redirect('back')
-    return
-  }
-  post
-    .updateOne({
-      $push: { likes: res.locals.currentUser }
-    })
-    .then(() => {
-      res.redirect('back')
+  Post.findById(req.query.id)
+    .then((post) => {
+      if (post.likes.includes(res.locals.currentUser.id)) {
+        res.redirect('back')
+        return
+      }
+      post
+        .updateOne({
+          $push: { likes: res.locals.currentUser }
+        })
+        .then(() => {
+          res.redirect('back')
+        })
+        .catch((err) => {
+          console.log('err')
+        })
     })
     .catch((err) => {
-      console.log('err')
+      console.log(err)
     })
 }
