@@ -1,5 +1,6 @@
 //  load packages
 const multer = require('multer')
+const moment = require('moment')
 
 //  import model
 const { Post } = require('../models /Post')
@@ -42,6 +43,13 @@ exports.post_index_get = (req, res) => {
 }
 
 //  view my post
+exports.post_detail_get = (req, res) =>{
+  Post.findById(req.query.id).populate('likes').then((post)=>{
+    res.render('post/detail', {post, moment})
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
 
 //  edit post
 exports.post_edit_get = async (req, res) => {

@@ -10,7 +10,7 @@
 <% posts.forEach((post)=>{ %>
 
 <br>
-  <div>
+  <div class="post-container">
     <% if(post.type == "image"){ %>
       <img src="/<%= post.path %>" alt="post image">
     <% }else if(post.type == "video"){ %>
@@ -25,6 +25,7 @@
       </form>
       <a href="/post/delete?id=<%= post._id %>">delete</a>
       <a href="/post/edit?id=<%= post._id %>">edit</a>
+      <a href="/post/detail?id=<%= post._id %>">details</a>
   </div>
   <hr>
 <% }) %>
