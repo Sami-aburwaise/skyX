@@ -15,7 +15,13 @@
     <br>
     likes: <%= post.likes.length %>
     <br>
-    <form action="/like?id=<%= post._id %>" method="post"><button>like</button></form>
+      <form action="/like?id=<%= post._id %>" method="post">
+        <button>like</button>
+      </form>
+      <a href="/delete?id=<%= post._id %>">delete</a>
+    <form action="/edit?id=<%= post._id %>" method="get">
+      <button>edit</button>
+    </form>
   </div>
   <hr>
 <% }) %>

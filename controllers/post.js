@@ -45,11 +45,16 @@ exports.post_index_get = (req, res) => {
 //  edit post
 
 //  delete post
-exports.post_delete_get = (req, res) => {
-  //condition if this is my post then I can delete
-  //delete
-
-  res.redirect('/')
+exports.post_delete_get = async (req, res) => {
+  const post = await Post.findById(req.query.id).populate()
+  if (post.user == res.locals.currentUser.id) {
+    Post.deleteOne(post)
+      .then()
+      .catch((err) => {
+        console.log('cuoldnt delete error: ' + err)
+      })
+  }
+  res.redirect('back')
 }
 
 //  like post
