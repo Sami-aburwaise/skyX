@@ -5,7 +5,6 @@ const passport = require('../helper/ppConfig')
 const multer = require('multer')
 let salt = 12
 
-
 //  Sign up
 exports.user_signup_get = (req, res) => {
   res.render('user/signup', { layout: 'user/signup' })
@@ -71,7 +70,7 @@ exports.profile_show_get = (req, res) => {
 exports.profile_edit_get = (req, res) => {
   User.findById(req.query.id)
     .then((user) => {
-      res.render('user/edit', { user })
+      res.render('user/edit', { user, layout: 'user/edit' })
     })
     .catch((err) => {
       console.log(err)
@@ -79,26 +78,18 @@ exports.profile_edit_get = (req, res) => {
 }
 exports.profile_edit_post = (req, res) => {
   let user = req.body
-  // user.userName = req.body.userName
-  // user.save(() => {
-  //   res.render('/')
-  // })
-  let hashPass = bcrypt.hashSync(req.body.password, salt)
-  user.password = hashPass
+  if (req.body.prev !== req.body.password) {
+    let hashPass = bcrypt.hashSync(req.body.password, salt)
+    user.password = hashPass
+  }
+  // if (typeof req.file !== 'undefined') {
+  //   user.profilePic = 'profilePic/' + req.file.filename
+  // }
   User.findByIdAndUpdate(req.body.id, user)
     .then(() => {
-      // let hashPass = bcrypt.hashSync(req.body.password, salt)
-      // User.password = hashPass
       res.redirect('/')
     })
     .catch((err) => {
       console.log(err)
     })
-  // User.findById(req.body.id)
-  //   .then(() => {
-  //     User.userName = req.body.userName
-  //   })
-  //   .catch((err) => {
-  //     console.log(err)
-  //   })
 }

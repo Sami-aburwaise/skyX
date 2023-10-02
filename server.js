@@ -5,7 +5,8 @@ const expressLayouts = require('express-ejs-layouts')
 const session = require('express-session')
 require('dotenv').config()
 let passport = require('./helper/ppConfig')
-
+const multer = require('multer')
+var path = require('path')
 //  invoke initilize
 const app = express()
 app.use(expressLayouts)
@@ -14,7 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.set('layout signin', false)
 app.set('layout signup', false)
-// app.set('layout edit', false)
+app.set('layout edit', false)
 //  initialises the authentication module.
 app.use(passport.initialize())
 app.use(

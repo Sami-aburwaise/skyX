@@ -23,8 +23,8 @@
 .topnav h1{
   float:left;
 }
-#pro{
-  position: relative;
-  left: 83%;
+.pro{
+  position: fixed;
+  top:150px; 
 }
 

@@ -1,15 +1,24 @@
 //  load packages
 const multer = require('multer')
 const moment = require('moment')
-
+const path = require('path')
 //  import model
 const { Post } = require('../models /Post')
 const { User } = require('../models /User')
 const { Comment } = require('../models /Comment')
 //  API's
-
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/postImages')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '_' + Date.now() + '_' + file.originalname)
+  }
+})
+var upload = multer({
+  storage: storage
+}).single('path')
 //  create post
-
 exports.post_create_get = (req, res) => {
   res.render('post/create')
 }
@@ -17,8 +26,9 @@ exports.post_create_get = (req, res) => {
 exports.post_create_post = (req, res) => {
   let post = new Post(req.body)
   if (typeof req.file !== 'undefined') {
-    post.profilePic = 'post_images/' + req.file.filename
+    post.path = 'postImages/' + req.file.filename
   }
+
   post
     .save()
     .then(() => {

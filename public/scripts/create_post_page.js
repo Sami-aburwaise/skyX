@@ -10,8 +10,10 @@ selectMedia.addEventListener('click', () => {
     <input type="text" name="path">`
   } else if (selectMedia.value == 'image') {
     mediaSource.innerHTML = `  
-      <label for="file" id="uploadButton"> upload image </label>
-      <input id="file" type="file" name="path" style="display: none;" onchange="loadFile(event)"/>
+      <label id="uploadButton" 
+      name="path"> upload image </label>
+      <input type='file' id="file" name="path" accept='image/*' onchange="loadFile(event)" style="opacity: 0;"/>
+
       <img alt="uploaded image" width="200" id="uploadedImage"/> 
     `
   } else if (selectMedia.value == 'noMedia') {
