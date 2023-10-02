@@ -4,7 +4,7 @@ const moment = require('moment')
 
 //  import model
 const { Post } = require('../models /Post')
-const { User } = require('../routes/user')
+const { User } = require('../models /User')
 
 //  API's
 
@@ -22,7 +22,6 @@ exports.post_create_post = (req, res) => {
   post
     .save()
     .then(() => {
-      console.log('saved to mongoDB')
       res.redirect('/')
     })
     .catch((err) => {

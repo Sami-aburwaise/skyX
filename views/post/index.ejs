@@ -15,7 +15,18 @@
     <% } %></div>
     <div class="post-description">
       <%= post.description %>
-    </div>
+      <% if(currentUser){ %>
+        <form action="/comment/add" method="post">
+        <input type="hidden" name="user" value="<%= currentUser.id %>">
+        <input type="hidden" name="post" value="<%= post._id %>">
+        <input type="text" name="content">
+        <button>comment</button>
+      <% }else{ %>
+        <input type="text" name="content">
+        <button onclick='window.location="/user/signin"'>comment</button>
+        <% } %>
+    </form>
+  </div>
 
     <br>
     likes: <%= post.likes.length %>
