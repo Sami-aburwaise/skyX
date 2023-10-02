@@ -68,7 +68,7 @@ exports.post_edit_get = async (req, res) => {
 }
 
 exports.post_updete_post = (req, res) => {
-  Post.findByIdAndUpdate(req.body.id, req.body)
+  Post.findByIdAndUpdate(req.query.id, req.body)
     .then(() => {
       res.redirect('/user/profile')
     })

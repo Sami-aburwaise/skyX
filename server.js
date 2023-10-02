@@ -37,6 +37,7 @@ app.use(function (req, res, next) {
 const userRouter = require('./routes/user')
 const postRouter = require('./routes/post')
 const commentRouter = require('./routes/comment')
+
 //  use routes
 app.use('/', userRouter)
 app.use('/', postRouter)

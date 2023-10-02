@@ -9,6 +9,7 @@ router.use(express.urlencoded({ extended: true }))
 const commentCtrl = require('../controllers/comment')
 
 //  routers
+router.use('/comment/update', commentCtrl.comment_update_post)
 
 //export to server
 module.exports = router

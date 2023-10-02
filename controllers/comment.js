@@ -9,6 +9,10 @@ const {Comment} = require('../models /Comment')
 //  API's
 
 //  edit comment
-exports.comment_edit_get = (req, res) => {}
-
-exports.comment_update_post = (req, res) => {}
+exports.comment_update_post = (req, res) => {
+  Comment.findByIdAndUpdate(req.query.id, req.body).then(()=>{
+    res.redirect('back')
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
