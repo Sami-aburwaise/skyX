@@ -9,6 +9,7 @@ body {
 }
 .post-container{
   display: flex;
+  flex-wrap: wrap;
 	align-items: center;
 	flex-direction: column;
 	padding: 3rem;
@@ -67,11 +68,19 @@ left: 400px;
   width: 10px;
   height: 10px;
 }
-.profile {
+/* .profile {
   position: fixed;
   left:300px
-}
+} */
 /* .img{
 	width: 400px;
 	height: 200px;
 } */
+
+.topnav {
+  opacity: 0;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
