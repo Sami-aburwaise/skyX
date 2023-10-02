@@ -2,16 +2,17 @@
 <link rel="stylesheet" href="/css/create_post_page.css">
 <div class="create">
 <h1>Create post</h1>
-<form action="/post/create" method="post">
+<form action="/post/create" method="post" enctype="multipart/form-data">
 
   <br>
   <div>
     <label>type</label>
     <select name="type">
       <option value="noMedia">no media</option>
-      <option value="image">image</option>
+      <option value="image">image </option>
       <option value="video">video</option>
     </select>
+   
   </div>
   <br>
   <div id="mediaSource">

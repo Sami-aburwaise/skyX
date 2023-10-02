@@ -5,7 +5,8 @@ const expressLayouts = require('express-ejs-layouts')
 const session = require('express-session')
 require('dotenv').config()
 let passport = require('./helper/ppConfig')
-
+const multer = require('multer')
+var path = require('path')
 //  invoke initilize
 const app = express()
 app.use(expressLayouts)

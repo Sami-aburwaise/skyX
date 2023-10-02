@@ -11,11 +11,8 @@
   <h1><a href="/"><img id="logo" src="/profilePic/lo.jpeg" alt="logo"></a></h1>
   <br>
   <% if(currentUser){ %>
-
-    <img src="/<%=currentUser.profilePic%>" alt="profilepicture" width="50px" id="pro">
+    <img src="/<%=currentUser.profilePic%>" alt="profilepicture" width="50px" class="pro">
     <h3 class="uname"><a href="/user/profile?id=<%=currentUser._id%>"><%= currentUser.userName %></a></h3>
-
-
     <a href="/user/logOut">LogOut</a>
     <a href="/post/create">Create Post</a>
 
