@@ -1,20 +1,20 @@
-<link rel="stylesheet" href="/css/post_style.css">
+<link rel="stylesheet" href="/css/mypost_style.css">
 <div class="profile">
 <h1>Profile page</h1>
 <a href="/user/edit/?id=<%=currentUser._id%>">Edit Profile</a>
-<div>
 </div>
-
 <h2>my posts</h2>
 
 <% posts.forEach((post)=>{ %>
 <br>
   <div class="post-container">
+    <div class="imgOrVideo">
     <% if(post.type == "image"){ %>
-      <img src="/<%= post.path %>" alt="post image">
+      <img src="/<%=post.path%>" alt="post image">
     <% }else if(post.type == "video"){ %>
       <iframe width="560" height="315" src="<%= post.path %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <% } %>
+  </div>
     <div class="post-description">
       <%= post.description %>
     </div>
@@ -27,7 +27,7 @@
       <a href="/post/delete?id=<%= post._id %>">delete</a>
       <a href="/post/edit?id=<%= post._id %>">edit</a>
       <a href="/post/detail?id=<%= post._id %>">details</a>
+    
   </div>
-  <hr>
 <% }) %>
 </div>

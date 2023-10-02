@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.set('layout signin', false)
 app.set('layout signup', false)
-// app.set('layout edit', false)
+app.set('layout edit', false)
 //  initialises the authentication module.
 app.use(passport.initialize())
 app.use(
