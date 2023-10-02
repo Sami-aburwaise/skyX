@@ -18,6 +18,7 @@ body {
 	background-color: #1b2028;
 	border-radius: 16px;
 	position: relative;
+	top:100px; 
 left: 400px;
 	border: 3px solid transparent;
 	background-clip: padding-box;
@@ -68,19 +69,54 @@ left: 400px;
   width: 10px;
   height: 10px;
 }
-/* .profile {
+.profile {
   position: fixed;
-  left:300px
-} */
+	; top:500px;
+}
 /* .img{
 	width: 400px;
 	height: 200px;
 } */
-
 .topnav {
-  opacity: 0;
+	position :fixed; 
+	top:0px;
+	width: 100%;
+	height:60px
 }
+/* .uname {
+	position: fixed;
+	left:130px;
+	top:4px;
+} */
+.linksC {
+	display: flex;
+	position: fixed;
+	top:0px;
+	right:20px;
+}
+#logo{
+	position:fixed ; 
+	top:0px;
+}
+
 a {
   color: white;
   text-decoration: none;
+}
+.pro {
+	display: block;
+	position: fixed;
+	left:30px;
+	width: 200px;
+	height: 200px;
+}
+.uname {
+	/* font-size: 200px; */
+	position: fixed;
+	left:30px;
+	top:340px;
+}
+
+.profile a {
+	color: #752e7c;
 }
