@@ -6,18 +6,22 @@ body {
 	align-items: center;
 	justify-content: center;
 
+	
+
 }
 .post-container{
-  display: flex;
 	align-items: center;
-	flex-direction: column;
 	padding: 3rem;
+	display: flex;
+	flex-direction: column;
 	width: fit-content; 
 	height: fit-content;
+	width: 700px;
 	background-color: #1b2028;
+	/* background-color: #a8a6c0; */
 	border-radius: 16px;
 	position: relative;
-left: 400px;
+left: 350px;
 	border: 3px solid transparent;
 	background-clip: padding-box;
 	text-align: center;
@@ -75,3 +79,120 @@ left: 400px;
 	width: 400px;
 	height: 200px;
 } */
+
+.comment { 
+	word-wrap: break-word;
+	word-break: break-all;
+	height: 30px;
+	width:200px
+}
+.hamburger {
+	display: block;
+}
+
+.bar {
+	display: block;
+	width: 25px;
+	height: 3px;
+	margin: 5px auto;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	background-color: #101010;
+}
+.nav-menu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+
+
+
+
+/* .box { 
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+} */
+
+/* For Tablet  */
+@media screen and (min-width:678px)and (max-width:1042px){
+.post-container{
+	width: 500px;
+	background-color: #734a58;
+	position: relative;
+	left:170px; 
+	top :150px;
+}
+iframe {
+	width:350px; 
+}
+.topnav {
+	position :fixed; 
+	top:0px;
+	width: 100%;
+	height:60px
+}
+.linksC {
+	display: flex;
+	position: fixed;
+	top:0px;
+	right:20px;
+}
+#logo{
+	position:fixed ; 
+	top:0px;
+}
+.pro {
+	display:none 
+}
+.uname {
+	position: fixed;
+	left:130px;
+	top:4px;
+}
+}
+
+/* For Phone  */
+@media screen and (max-width:767px){
+	.post-container{
+		max-width: 200px;
+		background-color: #734a58;
+		position: relative;
+		left:80px; 
+		top :150px;
+	}
+	iframe {
+		width:250px; 
+	}
+	.topnav {
+		position :fixed; 
+		top:0px;
+		width: 100%;
+		height:40px
+	}
+	.linksC {
+		display: flex;
+		position: fixed;
+		top:0px;
+		right:20px;
+	}
+	#logo{
+		position:fixed ; 
+		top:0px;
+		width: 70px;
+		height:70px
+	}
+	.pro {
+		display:none 
+	}
+	.uname {
+		position: fixed;
+		left:80px;
+		top:4px;
+	}
+	.linksC a {
+		font-size: 15px;
+	}
+}
