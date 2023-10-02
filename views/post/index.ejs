@@ -21,17 +21,15 @@
         <input type="hidden" name="post" value="<%= post._id %>">
         <input type="text" name="content">
         <button>comment</button>
+      </form>
+      <form action="/like?id=<%= post._id %>" method="post"><button><img class="like" src="/profilePic/he.jpeg" alt=""></button></form>
       <% }else{ %>
         <input type="text" name="content">
         <button onclick='window.location="/user/signin"'>comment</button>
-        <% } %>
-    </form>
-  </div>
-
-    <br>
+        <button onclick='window.location="/user/signin"'><img class="like" src="/profilePic/he.jpeg" alt=""></button>
+      <% } %>
+    </div>
     likes: <%= post.likes.length %>
-    <br>
-    <form action="/like?id=<%= post._id %>" method="post"><button><img class="like" src="/profilePic/he.jpeg" alt=""></button></form>
   </div>
 
 <% }) %>
