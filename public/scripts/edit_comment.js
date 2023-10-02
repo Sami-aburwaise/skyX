@@ -9,7 +9,9 @@ const editField = (c) => {
     <button>update</button>
   </form>
   <button type="button" onclick='location.reload()'>cancel</button>
-  <button type="button" onclick='/comment/delete?id=<%= comment._id %>'>delete</button>
+  <button type="button" onclick='window.location="/comment/delete?id=${
+    c.querySelector('p').dataset.id
+  }"'>delete</button>
   `
 }
 

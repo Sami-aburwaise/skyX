@@ -88,7 +88,7 @@ exports.post_updete_post = (req, res) => {
 }
 
 //  delete post
-exports.post_delete_get = async (req, res) => {
+exports.post_delete_get = (req, res) => {
   Post.findById(req.query.id)
     .then((post) => {
       if (post.user == res.locals.currentUser.id) {
