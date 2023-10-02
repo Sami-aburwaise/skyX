@@ -3,11 +3,14 @@
 <h1>Profile page</h1>
 <a href="/user/edit/?id=<%=currentUser._id%>">Edit Profile</a>
 </div>
-<h2>my posts</h2>
+
 
 <% posts.forEach((post)=>{ %>
 <br>
   <div class="post-container">
+    <a href="/post/delete?id=<%= post._id %>">Delete</a>
+    <a href="/post/edit?id=<%= post._id %>">Edit</a>
+    <a href="/post/detail?id=<%= post._id %>">Details</a>
     <div class="imgOrVideo">
     <% if(post.type == "image"){ %>
       <img src="/<%=post.path%>" alt="post image">
@@ -18,15 +21,14 @@
     <div class="post-description">
       <%= post.description %>
     </div>
+  
     <br>
     likes: <%= post.likes.length %>
     <br>
       <form action="/like?id=<%= post._id %>" method="post">
         <button>like</button>
       </form>
-      <a href="/post/delete?id=<%= post._id %>">delete</a>
-      <a href="/post/edit?id=<%= post._id %>">edit</a>
-      <a href="/post/detail?id=<%= post._id %>">details</a>
+     
     
   </div>
 <% }) %>
