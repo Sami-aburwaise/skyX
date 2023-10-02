@@ -4,8 +4,8 @@ const moment = require('moment')
 const path = require('path')
 //  import model
 const { Post } = require('../models /Post')
-const { User } = require('../routes/user')
-
+const { User } = require('../models /User')
+const { Comment } = require('../models /Comment')
 //  API's
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,7 +32,6 @@ exports.post_create_post = (req, res) => {
   post
     .save()
     .then(() => {
-      console.log('saved to mongoDB')
       res.redirect('/')
     })
     .catch((err) => {
@@ -44,6 +43,7 @@ exports.post_create_post = (req, res) => {
 exports.post_index_get = (req, res) => {
   //  NOTE: add populate when user and comment models are added
   Post.find()
+    .populate('user comment')
     .then((posts) => {
       res.render('post/index', { posts })
     })
@@ -78,7 +78,7 @@ exports.post_edit_get = async (req, res) => {
 }
 
 exports.post_updete_post = (req, res) => {
-  Post.findByIdAndUpdate(req.body.id, req.body)
+  Post.findByIdAndUpdate(req.query.id, req.body)
     .then(() => {
       res.redirect('/user/profile')
     })
@@ -122,6 +122,34 @@ exports.post_like_post = async (req, res) => {
         })
         .catch((err) => {
           console.log('err')
+        })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+//  comment post
+exports.comment_add_post = (req, res) => {
+  Post.findById(req.query.id)
+    .then((post) => {
+      let comment = new Comment(req.body)
+      comment
+        .save()
+        .then(() => {
+          post
+            .updateOne({
+              $push: { comment: comment }
+            })
+            .then(() => {
+              res.redirect('back')
+            })
+            .catch((err) => {
+              console.log('err')
+            })
+        })
+        .catch((err) => {
+          console.log(err)
         })
     })
     .catch((err) => {

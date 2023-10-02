@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/css/post_style.css">
 
+<script defer src="/scripts/edit_comment.js"></script>
+<h1>posts</h1>
 <br>
 <% posts.forEach((post)=>{ %>
   <br>
@@ -9,15 +11,45 @@
       <img src="/<%= post.path %>" alt="post image" class="img">
     <% }else if(post.type == "video"){ %>
       <iframe width="560" height="315" src="<%= post.path %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <% } %></div>
+    <% } %>
+  </div>
     <div class="post-description">
       <%= post.description %>
+      <% if(currentUser){ %>
+        <form action="/comment/add?id=<%= post._id %>" method="post">
+          <input type="hidden" name="user" value="<%= currentUser.id %>">
+          <input type="text" name="content">
+          <button>comment</button>
+        </form>
+      <form action="/like?id=<%= post._id %>" method="post"><button><img class="like" src="/profilePic/he.jpeg" alt=""></button></form>
+      <% }else{ %>
+        <input type="text" name="content">
+        <button onclick='window.location="/user/signin"'>comment</button>
+        <button onclick='window.location="/user/signin"'>
+          <img class="like" src="/profilePic/he.jpeg" alt="like">
+        </button>
+      <% } %>
     </div>
-
-    <br>
     likes: <%= post.likes.length %>
-    <br>
-    <form action="/like?id=<%= post._id %>" method="post"><button><img class="like" src="/profilePic/he.jpeg" alt=""></button></form>
+    <div class="comments-container">
+      <% post.comment.forEach((comment)=>{ %>
+        <% if(currentUser){ %>
+          <% if(currentUser.id.toString() == comment.user._id.toString()){ %>
+            <div class="comment-container editable">
+              <p data-id="<%= comment._id %>"><%= comment.content %></p>
+            </div>
+          <% }else{ %>
+            <div class="comment-container">
+              <%= comment.content %>
+            </div>
+          <% } %>
+        <% }else{ %>
+          <div class="comment-container">
+            <%= comment.content %>
+          </div>
+        <% } %>
+      <% }) %>
+    </div>
   </div>
 
 <% }) %>

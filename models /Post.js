@@ -5,12 +5,14 @@ const mongoose = require('mongoose')
 const postSchema = mongoose.Schema(
   {
     type: String,
-    path:String,
+    path: String,
     description: String,
-    likes: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
-    }], 
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
 
     user: {
       type: mongoose.Schema.Types.ObjectId,

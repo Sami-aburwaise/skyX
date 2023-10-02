@@ -37,10 +37,12 @@ app.use(function (req, res, next) {
 //  import routes
 const userRouter = require('./routes/user')
 const postRouter = require('./routes/post')
+const commentRouter = require('./routes/comment')
 
 //  use routes
 app.use('/', userRouter)
 app.use('/', postRouter)
+app.use('/', commentRouter)
 
 //  listen to port
 const port = process.env.PORT
