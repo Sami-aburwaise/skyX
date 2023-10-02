@@ -132,6 +132,7 @@ exports.comment_add_post = (req, res) => {
               $push: { comment: comment }
             })
             .then(() => {
+              res.redirect('back')
             })
             .catch((err) => {
               console.log('err')
@@ -144,5 +145,4 @@ exports.comment_add_post = (req, res) => {
     .catch((err) => {
       console.log(err)
     })
-  res.redirect('back')
 }
