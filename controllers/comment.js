@@ -8,20 +8,6 @@ const {Comment} = require('../models /Comment')
 
 //  API's
 
-//  create comment
-exports.comment_add_post = (req, res) => {
-  let comment = new Comment(req.body)
-  comment
-    .save()
-    .then(() => {
-      console.log('posted comment')
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  res.redirect('back')
-}
-
 //  edit comment
 exports.comment_edit_get = (req, res) => {}
 

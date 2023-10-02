@@ -5,7 +5,7 @@ const moment = require('moment')
 //  import model
 const { Post } = require('../models /Post')
 const { User } = require('../models /User')
-
+const { Comment } = require('../models /Comment')
 //  API's
 
 //  create post
@@ -33,6 +33,7 @@ exports.post_create_post = (req, res) => {
 exports.post_index_get = (req, res) => {
   //  NOTE: add populate when user and comment models are added
   Post.find()
+    .populate('user comment')
     .then((posts) => {
       res.render('post/index', { posts })
     })
@@ -42,12 +43,15 @@ exports.post_index_get = (req, res) => {
 }
 
 //  view my post
-exports.post_detail_get = (req, res) =>{
-  Post.findById(req.query.id).populate('likes').then((post)=>{
-    res.render('post/detail', {post, moment})
-  }).catch((err)=>{
-    console.log(err)
-  })
+exports.post_detail_get = (req, res) => {
+  Post.findById(req.query.id)
+    .populate('likes')
+    .then((post) => {
+      res.render('post/detail', { post, moment })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 //  edit post
@@ -113,4 +117,32 @@ exports.post_like_post = async (req, res) => {
     .catch((err) => {
       console.log(err)
     })
+}
+
+//  comment post
+exports.comment_add_post = (req, res) => {
+  Post.findById(req.query.id)
+    .then((post) => {
+      let comment = new Comment(req.body)
+      comment
+        .save()
+        .then(() => {
+          post
+            .updateOne({
+              $push: { comment: comment }
+            })
+            .then(() => {
+            })
+            .catch((err) => {
+              console.log('err')
+            })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  res.redirect('back')
 }
