@@ -1,8 +1,9 @@
-<script defer src="/scripts/edit_post_page.js"></script>
-<link rel="stylesheet" href="/css/edit_post_page.css">
-<h1>Edit post</h1>
+<script defer src="/scripts/create_post_page.js"></script>
+<link rel="stylesheet" href="/css/create_post_page.css">
+<div class="panel">
+
 <form action="/post/update" method="post">
-  <br>
+  <h1>Edit post</h1>
   <div>
     <label>type</label>
     <select name="type">
@@ -21,14 +22,17 @@
       <iframe width="560" height="315" src="<%= post.path %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <% } %>
   </div>
-  <br>
-  <div>
+
+  <div id="description">
     <label>description</label>
-    <input type="text" name="description" value="<%= post.description %>" >
+    <textarea type="text" name="description" class="input-filed" cols="40" rows="5" value="<%= post.description %>" >
+    </textarea>
   </div>
-  <br>
+
   <input type="hidden" name="user" value="<%= currentUser.id %>">
   <input type="hidden" name="id" value="<%= post._id %>">
-  <button type="submit">update</button>
+  <button type="submit"><h3>update</h3></button>
 
 </form>
+  
+</div>
