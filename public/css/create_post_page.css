@@ -1,18 +1,59 @@
 #uploadButton{
-  outline: solid;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#uploadButton p{
+  position: absolute;
+}
+
+#mediaSource{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #uploadedImage{
   display: none;
 }
 
-#mediaSource{
+
+.panel { 
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
-.create { 
-  position: fixed;
-  left: 800px;
+form{
+    background-color: #020820;
+    outline: solid black;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: #818181;
+    width: 50%;
+    height: 75%;
+    border-radius: 5px;
+}
+
+.input-field{
+  width: 80%;
+}
+
+#description{
+  display: flex;
+  flex-direction: column;
+}
+
+.btn{
+  border-radius: 5px;  
+  width: 30%;
 }

@@ -1,30 +1,28 @@
 <script defer src="/scripts/create_post_page.js"></script>
 <link rel="stylesheet" href="/css/create_post_page.css">
-<div class="create">
-<h1>Create post</h1>
+<div class="panel">
 <form action="/post/create" method="post" enctype="multipart/form-data">
-
-  <br>
+  <h1>Create post</h1>
   <div>
     <label>type</label>
-    <select name="type">
+    <select name="type" class="input-field">
       <option value="noMedia">no media</option>
       <option value="image">image </option>
       <option value="video">video</option>
     </select>
-   
   </div>
-  <br>
-  <div id="mediaSource">
+  <div id="mediaSource" class="input-field">
   </div>
-  <br>
-  <div>
-    <label>description</label>
-    <input type="text" name="description">
-  </div>
-  <br>
+
+<div id="description">
+  <label>description</label>
+  <textarea type="text" name="description" class="input-filed" cols="40" rows="5">
+  </textarea>
+</div>
+
+
   <input type="hidden" name="user" value="<%= currentUser.id %>">
-  <button type="submit">post</button>
+  <button type="submit" class="btn"><h3>post</h3></button>
 
 </form>
 </div>
