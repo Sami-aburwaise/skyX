@@ -22,7 +22,7 @@
         </form>
       <form action="/like?id=<%= post._id %>" method="post">
         <button>
-          <img class="like" src="/profilePic/he.jpeg" alt="">
+          <img class="like" src="/images/he.jpeg" alt="">
           <%= post.likes.length %>
         </button>
       </form>
@@ -30,7 +30,7 @@
         <input type="text" name="content">
         <button onclick='window.location="/user/signin"'>comment</button>
         <button onclick='window.location="/user/signin"'>
-          <img class="like" src="/profilePic/he.jpeg" alt="like">
+          <img class="like" src="/images/he.jpeg" alt="like">
           <%= post.likes.length %>
         </button>
       <% } %>
