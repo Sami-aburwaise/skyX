@@ -26,6 +26,6 @@ router.post('/user/signin', userCtrl.user_signin_post)
 router.get('/user/logOut', isLoggedin, userCtrl.user_logout_get)
 router.get('/user/profile', isLoggedin, userCtrl.profile_show_get)
 router.get('/user/edit', isLoggedin, userCtrl.profile_edit_get)
-router.post('/user/edit', userCtrl.profile_edit_post)
+router.post('/user/edit', upload, userCtrl.profile_edit_post)
 //export to server
 module.exports = router
