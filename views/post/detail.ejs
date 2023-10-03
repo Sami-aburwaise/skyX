@@ -27,6 +27,18 @@
       <br>
       <%= index+1 +' '+ like.userName %>
     </div>
-
   <% }) %>
 
+  <br>
+  Comments: <%=post.comment.length%>
+
+ Commentes:
+  <% post.comment.forEach((comment,index)=>{ %>
+    <div>
+      <br>
+      <p> <%= comment.user.userName %> :  <%= comment.content %></p>
+      <!-- <%= comment %>  -->
+     
+    </div>
+
+  <% }) %>
