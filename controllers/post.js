@@ -18,11 +18,11 @@ const storage = multer.diskStorage({
 var upload = multer({
   storage: storage
 }).single('path')
-//  create post
+//Create New Post - PArt1
 exports.post_create_get = (req, res) => {
   res.render('post/create')
 }
-
+//Create New Post - Part2
 exports.post_create_post = (req, res) => {
   let post = new Post(req.body)
   if (typeof req.file !== 'undefined') {
@@ -70,7 +70,7 @@ exports.post_detail_get = (req, res) => {
     })
 }
 
-//  edit post
+//  edit post -
 exports.post_edit_get = async (req, res) => {
   Post.findById(req.query.id)
     .then((post) => {
@@ -161,7 +161,7 @@ exports.comment_add_post = (req, res) => {
       console.log(err)
     })
 }
-
+//Will View The Profile of who posted the post
 exports.view_user_get = (req, res) => {
   console.log(req.query.id)
   // User.findById(req.query.id)
