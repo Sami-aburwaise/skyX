@@ -1,53 +1,58 @@
 <link rel="stylesheet" href="/css/post_style.css">
 
 <script defer src="/scripts/edit_comment.js"></script>
-<br>
+
 <div class="posts-container">
 <% posts.forEach((post)=>{ %>
   <div class="post-container">
-    <div class="imgOrVideo">
+    <div class="content-container">
     <% if(post.type == "image"){ %>
       <img src="/<%= post.path %>" alt="post image" class="img">
     <% }else if(post.type == "video"){ %>
-      <iframe width="560" height="315" src="<%=post.path%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe width="80%" src="<%=post.path%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <% } %>
+    <%= post.description %>
     </div>
-    <div class="post-description">
-      <%= post.description %>
+    <div class="comments-container">
       <% if(currentUser){ %>
         <form action="/comment/add?id=<%= post._id %>" method="post">
           <input type="hidden" name="user" value="<%= currentUser.id %>">
-          <input type="text" name="content" class="comment">
+          <input type="text" name="content" class="commentInput">
           <button>comment</button>
         </form>
-      <form action="/like?id=<%= post._id %>" method="post"><button><img class="like" src="/profilePic/he.jpeg" alt=""></button></form>
+      <form action="/like?id=<%= post._id %>" method="post">
+        <button>
+          <img class="like" src="/profilePic/he.jpeg" alt="">
+          <%= post.likes.length %>
+        </button>
+      </form>
       <% }else{ %>
         <input type="text" name="content">
         <button onclick='window.location="/user/signin"'>comment</button>
         <button onclick='window.location="/user/signin"'>
           <img class="like" src="/profilePic/he.jpeg" alt="like">
+          <%= post.likes.length %>
         </button>
       <% } %>
-    </div>
-    likes: <%= post.likes.length %>
-    <div class="comments-container">
-      <% post.comment.forEach((comment)=>{ %>
-        <% if(currentUser){ %>
-          <% if(currentUser.id.toString() == comment.user._id.toString()){ %>
-            <div class="comment-container editable">
-              <p data-id="<%= comment._id %>"><%= comment.content %></p>
-            </div>
+      <div class="comments-list">
+        <% post.comment.forEach((comment)=>{ %>
+          <% if(currentUser){ %>
+            <% if(currentUser.id.toString() == comment.user._id.toString()){ %>
+              <div class="comment-container editable">
+                <p data-id="<%= comment._id %>"><%= comment.content %></p>
+              </div>
+            <% }else{ %>
+              <div class="comment-container">
+                <%= comment.content %>
+              </div>
+            <% } %>
           <% }else{ %>
             <div class="comment-container">
               <%= comment.content %>
             </div>
           <% } %>
-        <% }else{ %>
-          <div class="comment-container">
-            <%= comment.content %>
-          </div>
-        <% } %>
-      <% }) %>
+        <% }) %>
+      </div>
     </div>
   </div>
 <% }) %>

@@ -14,12 +14,14 @@ body {
 }
 .post-container{
 	margin: 10px;
-	align-items: center;
+	padding: 10px;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	flex-wrap: wrap;
-	width: 70%; 
-	height: fit-content;
+	justify-content: space-between;
+	width: 90%; 
+	min-height: 150px;
+	max-height: 500px;
 	background-color: #1b2028;
 	/* background-color: #a8a6c0; */
 	border-radius: 16px;
@@ -55,9 +57,44 @@ body {
 	}
 }
 
+.content-container{
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.content-container img{
+	width: 80%;
+}
 
+.comments-container{
+	height: 120px;
+	width: 50%;
+}
+.comment-container{
+	overflow-wrap: break-word;
+}
 
+.commentInput{
+	width: 50%;
+	margin: 5px;
+	border-radius: 5px;
+}
 
+button{
+	border-radius: 5px;
+}
+
+.comments-list{
+	height: 100%;
+	overflow: auto;
+}
+
+form{
+	display: inline;
+}
 
 .like { 
   width: 10px;
