@@ -2,9 +2,8 @@
 
 <script defer src="/scripts/edit_comment.js"></script>
 <br>
+<div class="posts-container">
 <% posts.forEach((post)=>{ %>
-  <br>
-<div class="box">
   <div class="post-container">
     <div class="imgOrVideo">
     <% if(post.type == "image"){ %>
@@ -12,7 +11,7 @@
     <% }else if(post.type == "video"){ %>
       <iframe width="560" height="315" src="<%=post.path%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <% } %>
-  </div>
+    </div>
     <div class="post-description">
       <%= post.description %>
       <% if(currentUser){ %>
@@ -49,9 +48,7 @@
           </div>
         <% } %>
       <% }) %>
-     
     </div>
   </div>
-</div>
 <% }) %>
-
+</div>

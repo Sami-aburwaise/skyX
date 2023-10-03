@@ -1,27 +1,29 @@
 
 body {
-	line-height: 1.5;
-	min-height: 101vh;
 	font-family: "Be Vietnam Pro", sans-serif;
-	align-items: center;
-	justify-content: center;
-
-	
-
+	display: flex;
 }
-.post-container{
-	align-items: center;
-	padding: 3rem;
+.posts-container{
+	position: absolute;
+	right: 0;
+	width: 80%;
 	display: flex;
 	flex-direction: column;
-	width: fit-content; 
+	justify-content: space-between;
+	align-items: center;
+}
+.post-container{
+	margin: 10px;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 70%; 
 	height: fit-content;
-	width: 700px;
 	background-color: #1b2028;
 	/* background-color: #a8a6c0; */
 	border-radius: 16px;
 	position: relative;
-left: 350px;
 	border: 3px solid transparent;
 	background-clip: padding-box;
 	text-align: center;
@@ -55,30 +57,16 @@ left: 350px;
 
 
 
-/* .imgOrVideo { 
-	overflow: hidden;
-	width: 175px;
-	height: 175px;
-	position: relative;
-	
-} */
-.post-description{
-  font-size: 1.5rem;
-	font-weight: 600;
-	margin-top: 1.5rem;
-}
+
+
 .like { 
   width: 10px;
   height: 10px;
 }
-.profile {
+/* .profile {
   position: fixed;
   left:300px
 }
-/* .img{
-	width: 400px;
-	height: 200px;
-} */
 
 .comment { 
 	word-wrap: break-word;
@@ -105,7 +93,7 @@ left: 350px;
 	align-items: center;
 }
 
-
+ */
 
 
 
@@ -116,7 +104,7 @@ left: 350px;
 	flex-wrap: wrap;
 } */
 
-/* For Tablet  */
+/* 
 @media screen and (min-width:678px)and (max-width:1042px){
 .post-container{
 	width: 500px;
@@ -143,6 +131,7 @@ iframe {
 #logo{
 	position:fixed ; 
 	top:0px;
+	width: 10%;
 }
 .pro {
 	display:none 
@@ -154,7 +143,6 @@ iframe {
 }
 }
 
-/* For Phone  */
 @media screen and (max-width:767px){
 	.post-container{
 		max-width: 200px;
@@ -181,8 +169,7 @@ iframe {
 	#logo{
 		position:fixed ; 
 		top:0px;
-		width: 70px;
-		height:70px
+		width: 10px;
 	}
 	.pro {
 		display:none 
@@ -195,4 +182,4 @@ iframe {
 	.linksC a {
 		font-size: 15px;
 	}
-}
+} */
