@@ -4,18 +4,12 @@
 
 <div class="posts-container">
 <% posts.forEach((post)=>{ %>
-
+  <div class="userPost">
+    <img src="<%=post.user.profilePic%>" alt="profilePic">
+    <%=post.user.userName%>
+  </div>
   <div class="post-container">
     <div class="content-container">
-
-  <br>
-  <div class="userPost">
-  <img src="<%=post.user.profilePic%>" alt="profilePic">
-  <%=post.user.userName%></div>
-<div class="box">
-  
-    <div class="imgOrVideo">
-
     <% if(post.type == "image"){ %>
       <img src="/<%= post.path %>" alt="post image" class="img">
     <% }else if(post.type == "video"){ %>
