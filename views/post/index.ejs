@@ -5,11 +5,11 @@
 <% posts.forEach((post)=>{ %>
   <br>
   <div class="userPost">
-  <img src="<%=post.user.profilePic%>" alt="profilePic">
+  <a href="/userPost/detail?id=<%=post.user._id%>"><img src="<%=post.user.profilePic%>" alt="profilePic"></a>
+  <input type="hidden" name="id" value="<%= post.user._id%>">
   <%=post.user.userName%></div>
 <div class="box">
   <div class="post-container">
-  
     <div class="imgOrVideo">
     <% if(post.type == "image"){ %>
       <img src="/<%= post.path %>" alt="post image" class="img">
