@@ -73,21 +73,14 @@ left: 400px;
   position: fixed;
 	; top:500px;
 }
-/* .img{
-	width: 400px;
-	height: 200px;
-} */
+
 .topnav {
 	position :fixed; 
 	top:0px;
 	width: 100%;
 	height:60px
 }
-/* .uname {
-	position: fixed;
-	left:130px;
-	top:4px;
-} */
+
 .linksC {
 	display: flex;
 	position: fixed;
