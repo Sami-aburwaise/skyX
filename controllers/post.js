@@ -164,9 +164,23 @@ exports.comment_add_post = (req, res) => {
 
 exports.view_user_get = (req, res) => {
   console.log(req.query.id)
-  User.findById(req.query.id)
-    .then((user) => {
-      res.render('user/detail', { user })
+  // User.findById(req.query.id)
+  //   .then((user) => {
+  //     res.render('user/detail', { user, layout: 'user/detail' })
+  //   })
+  //   .catch((err) => {
+  //     console.log(err)
+  //   })
+
+  Post.find({ user: req.query.id })
+    .then((posts) => {
+      User.findById(req.query.id)
+        .then((user) => {
+          res.render('user/detail', { posts, user })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     })
     .catch((err) => {
       console.log(err)
