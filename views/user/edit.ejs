@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/edit_profile.css">
 <div class="edit">
 <h1>Edit Profile</h1>
-<form action="/user/edit" method="POST">
+<form action="/user/edit" method="POST" enctype="multipart/form-data">
   <label>userName</label>
   <input type="text" name="userName" value="<%= user.userName%>">
   <br>
@@ -14,8 +14,8 @@
   <input type="password" name="password" value="<%=user.password%>">
   <br>
   <br>
-  <!-- <label >Change Profile Picture </label>
-  <input id="file" type="file" name="profilePic" /> -->
+  <label >Change Profile Picture </label>
+  <input id="file" type="file" name="profilePic" accept="image/*"/>
   <input type="hidden" name="id" value="<%=user._id%>">
   <input type="hidden" name="prev" value="<%=user.password%>">
   <button type="submit"> Edit Profile </button>
