@@ -31,6 +31,6 @@ router.post('/post/update', postCtrl.post_updete_post)
 router.get('/post/delete', postCtrl.post_delete_get)
 router.post('/like', postCtrl.post_like_post)
 router.post('/comment/add', postCtrl.comment_add_post)
-
+router.get('/userPost/detail', postCtrl.view_user_get)
 //export to server
 module.exports = router

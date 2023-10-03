@@ -4,10 +4,13 @@
 
 <div class="posts-container">
 <% posts.forEach((post)=>{ %>
-  <div class="userPost">
-    <img src="<%=post.user.profilePic%>" alt="profilePic">
-    <%=post.user.userName%>
-  </div>
+  
+ <div class="userPost">
+  <a href="/userPost/detail?id=<%=post.user._id%>"><img src="<%=post.user.profilePic%>" alt="profilePic"></a>
+  <input type="hidden" name="id" value="<%= post.user._id%>">
+  <%=post.user.userName%>
+ </div>
+  
   <div class="post-container">
     <div class="content-container">
     <% if(post.type == "image"){ %>

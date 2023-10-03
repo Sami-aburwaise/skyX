@@ -4,7 +4,7 @@ const moment = require('moment')
 const path = require('path')
 //  import model
 const { Post } = require('../models /Post')
-const { User } = require('../models /User')
+const User = require('../models /User')
 const { Comment } = require('../models /Comment')
 //  API's
 const storage = multer.diskStorage({
@@ -156,6 +156,17 @@ exports.comment_add_post = (req, res) => {
         .catch((err) => {
           console.log(err)
         })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+exports.view_user_get = (req, res) => {
+  console.log(req.query.id)
+  User.findById(req.query.id)
+    .then((user) => {
+      res.render('user/detail', { user })
     })
     .catch((err) => {
       console.log(err)
