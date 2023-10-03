@@ -5,9 +5,17 @@ body {
 	font-family: "Be Vietnam Pro", sans-serif;
 	align-items: center;
 	justify-content: center;
-
-	
-
+}
+.userPost{
+	/* height: 100px;
+	width:100px;  */
+	position: relative;
+	left:350px ;
+}
+.userPost img {
+	width: 100px;
+	height:100px;
+	border-radius: 25%;;
 }
 .post-container{
 	align-items: center;

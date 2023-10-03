@@ -82,9 +82,9 @@ exports.profile_edit_post = (req, res) => {
     let hashPass = bcrypt.hashSync(req.body.password, salt)
     user.password = hashPass
   }
-  // if (typeof req.file !== 'undefined') {
-  //   user.profilePic = 'profilePic/' + req.file.filename
-  // }
+  if (typeof req.file !== 'undefined') {
+    user.profilePic = 'profilePic/' + req.file.filename
+  }
   User.findByIdAndUpdate(req.body.id, user)
     .then(() => {
       res.redirect('/')

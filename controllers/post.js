@@ -56,6 +56,12 @@ exports.post_index_get = (req, res) => {
 exports.post_detail_get = (req, res) => {
   Post.findById(req.query.id)
     .populate('likes')
+    .populate({
+      path: 'comment', // populate Comment
+      populate: {
+        path: 'user' // in comment, populate user
+      }
+    })
     .then((post) => {
       res.render('post/detail', { post, moment })
     })
@@ -104,7 +110,6 @@ exports.post_delete_get = (req, res) => {
       console.log(err)
     })
 }
-
 //  like post
 exports.post_like_post = async (req, res) => {
   Post.findById(req.query.id)
