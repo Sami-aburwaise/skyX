@@ -1,10 +1,12 @@
+
+<link rel="stylesheet" href="/css/edit_post_page.css">
 <h1>Post details</h1>
 
 <div>
   <% if(post.type == "image"){ %>
-    <img src="<%=post.path%>" alt="Post Image">
+    <img src="/<%=post.path%>" alt="Post Image">
   <% }else if(post.type == "video"){ %>
-    <iframe width="560" height="315" src="<%= post.path %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="<%=post.path%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   <% } %>
   <%= post.description %>
 

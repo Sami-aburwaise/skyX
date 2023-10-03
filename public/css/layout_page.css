@@ -26,5 +26,6 @@
 .pro{
   position: fixed;
   top:150px; 
+  display: none;
 }
 
