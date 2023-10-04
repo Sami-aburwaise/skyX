@@ -187,4 +187,19 @@ exports.view_user_get = (req, res) => {
     .catch((err) => {
       console.log(err)
     })
+
+  // Post.findById(req.query.id)
+  // .populate('likes')
+  // .populate({
+  //   path: 'comment', // populate Comment
+  //   populate: {
+  //     path: 'user' // in comment, populate user
+  //   }
+  // })
+  // .then((post) => {
+  //   res.render('post/detail', { post, moment })
+  // })
+  // .catch((err) => {
+  //   console.log(err)
+  // })
 }
