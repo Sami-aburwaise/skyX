@@ -11,7 +11,22 @@ The objective of this project is to create a social media app.
  * upload images and videos
 
 ## How to get started
+### ERD
 
+##Technologies used
+ * HTML, CSS, Javascript
+ * bcrypt
+ * dotenv
+  ejs
+  express
+  express-ejs-layouts
+  express-session
+  method-override
+  moment
+  mongoose
+  multer
+  passport
+  passport-local
 
 
 ## wireframe
