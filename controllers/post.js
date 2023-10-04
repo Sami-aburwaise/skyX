@@ -85,6 +85,10 @@ exports.post_edit_get = (req, res) => {
 
 exports.post_updete_post = (req, res) => {
   console.log(req.query.id)
+  let post = req.body
+  if (typeof req.file !== 'undefined') {
+    post.path = 'postImages/' + req.file.filename
+  }
   Post.findByIdAndUpdate(req.query.id, req.body)
     .then(() => {
       res.redirect('/user/profile')

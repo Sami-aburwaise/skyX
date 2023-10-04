@@ -11,7 +11,7 @@
     <% if(post.type == "image"){ %>
       <img src="/<%=post.path%>" alt="post image" class="img">
     <% }else if(post.type == "video"){ %>
-      <iframe width="560" height="315" src="<%=post.path%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe width="80%"  src="<%=post.path%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <% } %>
       <%= post.description %>
     </div>
