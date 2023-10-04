@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/post_style.css">
 <h1>Post details</h1>
 <div class="posts-container">
-  <div class="post-container2">
+  <div class="post-container expandable">
     <div class="content-container">
   <% if(post.type == "image"){ %>
     <img src="/<%=post.path%>" alt="Post Image" class="img">
@@ -11,13 +11,16 @@
 
   <% } %>
 </div>
+<br>
 <div class="post-description">
   <%= post.description %>
+  <br>
+  <hr>
   Created At: <%= moment(post.createdAt).fromNow() %>
+  <br>
   Updated At: <%= moment(post.updatedAt).fromNow() %>
 <br>
-
-
+<hr>
   likes: <%= post.likes.length %>
   people who likes this:
   <br>
@@ -32,7 +35,7 @@
 
 <div class="comments-list">
   <% post.comment.forEach((comment,index)=>{ %>
-    <div class="comment-container editable">
+    <div class="comment-container">
       <%= comment.user.userName %> :  <%= comment.content %>
     </div>
 <br>

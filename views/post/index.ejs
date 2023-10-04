@@ -47,17 +47,28 @@
           <% if(currentUser){ %>
             <% if(currentUser.id.toString() == comment.user._id.toString()){ %>
               <div class="comment-container editable">
-                <p data-id="<%= comment._id %>"><%= comment.content %></p>
+                <p data-id="<%= comment._id %>">
+                  <strong><img src="<%= comment.user.profilePic %>"> <%= comment.user.userName %>:</strong>
+                  <br>
+                  <%= comment.content %>
+                </p>
+                <hr>
               </div>
             <% }else{ %>
               <div class="comment-container">
+                <strong><img src="<%= comment.user.profilePic %>"> <%= comment.user.userName %>:</strong>
+                <br>
                 <%= comment.content %>
               </div>
+              <hr>
             <% } %>
           <% }else{ %>
             <div class="comment-container">
+              <strong><img src="<%= comment.user.profilePic %>"> <%= comment.user.userName %>:</strong>
+              <br>
               <%= comment.content %>
             </div>
+            <hr>
           <% } %>
         <% }) %>
       </div>

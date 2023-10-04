@@ -44,6 +44,12 @@ exports.post_index_get = (req, res) => {
   //  NOTE: add populate when user and comment models are added
   Post.find()
     .populate('user comment')
+    .populate({
+      path: 'comment', // populate Comment
+      populate: {
+        path: 'user' // in comment, populate user
+      }
+    })
     .then((posts) => {
       res.render('post/index', { posts })
     })
@@ -168,7 +174,6 @@ exports.comment_add_post = (req, res) => {
 }
 //Will View The Profile of who posted the post
 exports.view_user_get = (req, res) => {
-  console.log(req.query.id)
   // User.findById(req.query.id)
   //   .then((user) => {
   //     res.render('user/detail', { user, layout: 'user/detail' })
