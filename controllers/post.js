@@ -174,14 +174,6 @@ exports.comment_add_post = (req, res) => {
 }
 //Will View The Profile of who posted the post
 exports.view_user_get = (req, res) => {
-  // User.findById(req.query.id)
-  //   .then((user) => {
-  //     res.render('user/detail', { user, layout: 'user/detail' })
-  //   })
-  //   .catch((err) => {
-  //     console.log(err)
-  //   })
-
   Post.find({ user: req.query.id })
     .then((posts) => {
       User.findById(req.query.id)
