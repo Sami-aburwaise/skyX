@@ -1,0 +1,21 @@
+.userPost{
+	position: relative;
+  width: 90%;
+  height: 50px;
+  display: flex;
+  justify-content: end;
+}
+.userPost img {
+	border-radius: 25%;
+  margin: 10px;
+  height: 100%;
+}
+
+.userPost a{
+	color: white;
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
