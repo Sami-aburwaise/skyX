@@ -88,3 +88,8 @@ form{
   border-radius: 5px;  
   width: 30%;
 }
+
+.img {
+  width:100px ; 
+  height:100px
+}

@@ -107,11 +107,22 @@ form{
   width: 10px;
   height: 10px;
 }
+.img {
+	height:200px; 
+}
+a{
+	color: white;
+}
+.profile {
+	position: relative;
+	left:400px; 
+	font-size: 20px;
+	color: white;
+}
 /* .profile {
   position: fixed;
   left:300px
 }
-
 .comment { 
 	word-wrap: break-word;
 	word-break: break-all;
