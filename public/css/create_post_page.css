@@ -32,7 +32,6 @@
 
 form{
     background-color: #020820;
-    outline: solid black;
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -41,7 +40,39 @@ form{
     color: #818181;
     width: 50%;
     height: 75%;
-    border-radius: 5px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    text-align: center;
+    color: #f1f3f3;
+
+    border-radius: 16px;
+	  position: relative;
+    background-image: linear-gradient(
+      135deg,
+      rgba(#752e7c, 0.35),
+      rgba(#734a58, 0.1) 15%,
+      #1b2028 20%,
+      #1b2028 100%
+    );
+    &:after {
+      content: "";
+      display: block;
+      top: -3px;
+      left: -3px;
+      bottom: -3px;
+      right: -3px;
+      z-index: -1;
+      position: absolute;
+      border-radius: 16px;
+      background-image: linear-gradient(
+        135deg,
+        #752e7c,
+        #734a58 20%,
+        #1b2028 30%,
+        #2c333e 100%
+      );
+    }
+
 }
 
 .input-field{
