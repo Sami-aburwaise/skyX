@@ -1,44 +1,34 @@
 
-<link rel="stylesheet" href="/css/edit_post_page.css">
+<link rel="stylesheet" href="/css/edit_profile.css">
 <h1>Post details</h1>
 
-<div>
+<div class="post-container">
+  <div class="content-container">
   <% if(post.type == "image"){ %>
     <img src="/<%=post.path%>" alt="Post Image">
   <% }else if(post.type == "video"){ %>
     <iframe width="560" height="315" src="<%=post.path%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   <% } %>
   <%= post.description %>
-
-  </div>
-
-  <div>
-    created at: <%= moment(post.createdAt).fromNow() %>
-    <br>
-    updated at: <%= moment(post.updatedAt).fromNow() %>
-  </div>
-
+  Created At: <%= moment(post.createdAt).fromNow() %>
   <br>
+  Updated At: <%= moment(post.updatedAt).fromNow() %>
+</div>
+
   likes: <%= post.likes.length %>
   <br>
   people who likes this:
   <% post.likes.forEach((like, index)=>{ %>
-    <div>
       <br>
       <%= index+1 +' '+ like.userName %>
-    </div>
   <% }) %>
-
-  <br>
+  <br><br>
+  <div class="comments-container">
   Comments: <%=post.comment.length%>
-
- Commentes:
+<br>
+<div class="comments-list">
   <% post.comment.forEach((comment,index)=>{ %>
-    <div>
-      <br>
       <p> <%= comment.user.userName %> :  <%= comment.content %></p>
-      <!-- <%= comment %>  -->
-     
-    </div>
-
+    </div></div>
+</div>
   <% }) %>
