@@ -71,7 +71,7 @@ exports.post_detail_get = (req, res) => {
 }
 
 //  edit post
-exports.post_edit_get = async (req, res) => {
+exports.post_edit_get = (req, res) => {
   Post.findById(req.query.id)
     .then((post) => {
       if (post.user == res.locals.currentUser.id) {
@@ -84,6 +84,7 @@ exports.post_edit_get = async (req, res) => {
 }
 
 exports.post_updete_post = (req, res) => {
+  console.log(req.query.id)
   Post.findByIdAndUpdate(req.query.id, req.body)
     .then(() => {
       res.redirect('/user/profile')
