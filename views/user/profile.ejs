@@ -1,8 +1,5 @@
 <link rel="stylesheet" href="/css/post_style.css">
-<div class="profile">
-<a href="/user/edit/?id=<%=currentUser._id%>">Edit Profile</a>
-<%= currentUser.email%>
-</div> 
+
 <div class="posts-container">
 <% posts.forEach((post)=>{ %>
 <br>
@@ -27,5 +24,4 @@
       </form>
   </div>
 <% }) %>
-
 </div>

@@ -29,7 +29,7 @@ nav a {
 }
 
 #topnav{
-  height: 50%;
+  height: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -47,3 +47,6 @@ nav a {
   border-radius: 100%;
 }
 
+#editProfileLink{
+  display: none;
+}
