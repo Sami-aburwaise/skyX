@@ -10,6 +10,25 @@ Social Media app based on Express and MongooDB. The aim of this app is to let th
 - create, edit, delete posts and comments
 - upload images and videos
 
+
+## How to get started
+### ERD
+
+##Technologies used
+ * HTML, CSS, Javascript
+ * bcrypt
+ * dotenv
+ * ejs
+ * express
+ * express-ejs-layouts
+ * express-session
+ * method-override
+ * moment
+ * mongoose
+ * multer
+ * passport
+ * passport-local
+
 ## How to get started
 
 ## wireframe
