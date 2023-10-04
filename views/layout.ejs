@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social App</title>
   <link rel="stylesheet" href="/css/layout_page.css">
+  <script defer src="/scripts/manageNav.js"></script>
 </head>
 <body>
   <nav>
@@ -16,6 +17,9 @@
           <%= currentUser.userName %>
         </a>
         <a href="/post/create">Post</a>
+        <a href="/user/edit/?id=<%=currentUser._id%>" id="editProfileLink">
+          Edit Profile
+        </a>
       <% }else{ %>
         <a href="/user/signup">SignUp</a>
         <a href="/user/signin">SignIn</a>
