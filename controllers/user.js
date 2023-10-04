@@ -70,7 +70,7 @@ exports.profile_show_get = (req, res) => {
 exports.profile_edit_get = (req, res) => {
   User.findById(req.query.id)
     .then((user) => {
-      res.render('user/edit', { user, layout: 'user/edit' })
+      res.render('user/edit', { user })
     })
     .catch((err) => {
       console.log(err)

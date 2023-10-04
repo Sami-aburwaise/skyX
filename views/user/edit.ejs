@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="/css/edit_profile.css">
-<div class="edit">
-<h1>Edit Profile</h1>
+<link rel="stylesheet" href="/css/create_post_page.css">
+<div class="panel">
+
 <form action="/user/edit" method="POST" enctype="multipart/form-data">
+  <h1>Edit Profile</h1>
   <label>userName</label>
   <input type="text" name="userName" value="<%= user.userName%>">
   <br>
@@ -18,6 +19,6 @@
   <input id="file" type="file" name="profilePic" accept="image/*"/>
   <input type="hidden" name="id" value="<%=user._id%>">
   <input type="hidden" name="prev" value="<%=user.password%>">
-  <button type="submit"> Edit Profile </button>
+  <button type="submit"> <h3>Edit Profile </h3> </button>
 </form>
 </div>
