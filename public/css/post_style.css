@@ -139,11 +139,13 @@ form{
   background: #555;
 }
 
-/*
-for smartphone feature work
 @media screen and (max-width:767px){
-	.post-container{
-		flex-direction: column;
-		max-height: fit-content;
-	}
-} */
+  .post-container{
+    flex-direction: column;
+    align-items: center;
+  }
+  .comments-list{
+    height: 50%;
+    width: 100%;
+  }
+}
